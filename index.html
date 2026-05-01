@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>모바일 근태 조회</title>
+  <title>자원운영팀 근태 조회</title>
   <style>
     :root{
       --bg:#f4f7fb; --card:#ffffff; --text:#0f172a; --muted:#64748b; --line:#e2e8f0;
@@ -60,12 +60,13 @@
     }
   </style>
 </head>
-<body>
-  <main class="app">
+<body
+  <main class="app">>
     <section class="hero">
-      <h1>모바일 근태 조회</h1>
-      <p>사번을 입력하면 본인 데이터만 볼 수 있습니다. 운영 시에는 <strong>data/current.json</strong>만 교체하면 같은 화면을 계속 사용할 수 있습니다.</p>
-    </section>
+      <h1>자원운영팀 근태 조회</h1>
+      <p>사번을 입력하면 본인 데이터만 볼 수 있습니다. 자원운연팀 자체 근태현황이므로 <strong>큰태 시스템</strong>
+      과는 다를 수 있습니다
+      </section>
 
     <section class="panel login" id="loginCard">
       <label class="label" for="empNoInput">사번 입력</label>
@@ -73,7 +74,7 @@
         <input class="input" id="empNoInput" type="text" inputmode="numeric" autocomplete="off" placeholder="예: 2110115" maxlength="20">
         <button class="btn btn-primary" id="loginBtn">조회</button>
       </div>
-      <div class="help">처음 열면 현재 월 JSON을 불러옵니다. 같은 기기에서는 마지막 조회 사번을 임시 저장합니다.</div>
+      <div class="help">같은 기기에서는 마지막 조회 사번을 임시 저장합니다.</div>
       <div class="error" id="errorBox"></div>
     </section>
 
@@ -88,7 +89,7 @@
 
       <div class="chips" id="infoChips"></div>
 
-      <h3 class="section-title">월간 메트릭</h3>
+      <h3 class="section-title">월간 요약</h3>
       <div class="metrics" id="metricGrid"></div>
 
       <h3 class="section-title">일자별 근태 상세</h3>
@@ -223,13 +224,13 @@
         try{
           await loadJson();
         }catch(err){
-          showError('data/current.json을 불러오지 못했습니다. PC 테스트는 start_local_server.bat로 실행해 주세요.');
+          showError('data/current.json을 불러오지 못했습니다. 다시 실행해 주세요.');
           return;
         }
       }
       const emp = findEmployee(empNo);
       if(!emp){
-        showError('일치하는 사번이 없습니다. 숫자를 다시 확인해 주세요.');
+        showError('일치하는 사번이 없습니다. 사번을 다시 확인해 주세요.');
         return;
       }
       localStorage.setItem(STORAGE_KEY, empNo);
